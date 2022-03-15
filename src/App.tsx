@@ -14,7 +14,11 @@ function App() {
           <ListExpenses />
         </Container>
       </CssBaseline>
-      <Fab aria-label="Add" color="primary">
+      <Fab
+        aria-label="Add"
+        color="primary"
+        style={{ position: "absolute", bottom: 50, right: 50 }}
+      >
         <AddIcon />
       </Fab>
     </>
