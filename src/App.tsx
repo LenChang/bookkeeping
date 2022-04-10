@@ -11,6 +11,7 @@ import "./App.css";
 const actions = [{ icon: <NoteAddIcon />, name: "New record" }];
 
 function App() {
+  // It's incorrect; there's no method to change the value to false!!!!!
   const [openNewExpense, setOpenNewExpense] = useState(false);
 
   return (
