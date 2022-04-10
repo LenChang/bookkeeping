@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { Box, Container, SpeedDialAction, CssBaseline } from "@mui/material";
 import ListExpenses from "./Comp/ListExpenses";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
@@ -10,12 +10,19 @@ import "./App.css";
 
 const actions = [{ icon: <NoteAddIcon />, name: "New record" }];
 
+export const OpenNewExpContext = createContext({
+  open: false,
+  setOpen: (tmp: boolean) => {},
+});
+
 function App() {
   // It's incorrect; there's no method to change the value to false!!!!!
   const [openNewExpense, setOpenNewExpense] = useState(false);
 
   return (
-    <>
+    <OpenNewExpContext.Provider
+      value={{ open: openNewExpense, setOpen: setOpenNewExpense as any }}
+    >
       <CssBaseline>
         <CssBaseline />
         <Container fixed>
@@ -39,8 +46,8 @@ function App() {
           onClick={() => setOpenNewExpense(true)}
         />
       </SpeedDial>
-      <NewExpense isOpen={openNewExpense} />
-    </>
+      <NewExpense />
+    </OpenNewExpContext.Provider>
   );
 }
 

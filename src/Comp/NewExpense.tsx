@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Dialog,
@@ -6,13 +6,10 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import { OpenNewExpContext } from "../App";
 
-export default function NewExpense(props: { isOpen: boolean }) {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setOpen(props.isOpen);
-  }, [props.isOpen]);
+export default function NewExpense() {
+  const { open, setOpen } = useContext(OpenNewExpContext);
 
   const handleClose = () => {
     setOpen(false);
@@ -28,20 +25,20 @@ export default function NewExpense(props: { isOpen: boolean }) {
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>Subscribe</DialogTitle>
       {/* <DialogContent>
-        <DialogContentText>
-          To subscribe to this website, please enter your email address here. We
-          will send updates occasionally.
-        </DialogContentText>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Email Address"
-          type="email"
-          fullWidth
-          variant="standard"
-        />
-      </DialogContent> */}
+  <DialogContentText>
+    To subscribe to this website, please enter your email address here. We
+    will send updates occasionally.
+  </DialogContentText>
+  <TextField
+    autoFocus
+    margin="dense"
+    id="name"
+    label="Email Address"
+    type="email"
+    fullWidth
+    variant="standard"
+  />
+</DialogContent> */}
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
         <Button onClick={handleSubmit}>Subscribe</Button>
