@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Container, SpeedDialAction, CssBaseline } from "@mui/material";
 import ListExpenses from "./Comp/ListExpenses";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import NewExpense from "./Comp/NewExpense";
 
 import "./App.css";
 
 const actions = [{ icon: <NoteAddIcon />, name: "New record" }];
 
 function App() {
+  const [openNewExpense, setOpenNewExpense] = useState(false);
+
   return (
     <>
       <CssBaseline>
@@ -32,8 +35,10 @@ function App() {
           key={actions[0].name}
           icon={actions[0].icon}
           tooltipTitle={actions[0].name}
+          onClick={() => setOpenNewExpense(true)}
         />
       </SpeedDial>
+      <NewExpense isOpen={openNewExpense} />
     </>
   );
 }
